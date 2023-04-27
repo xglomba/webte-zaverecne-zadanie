@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'zaverecne_zadanie.apps.ZaverecneZadanieConfig',
+    'zaverecne_zadanie.apps.ZaverecneZadanieConfig'
 ]
 
 MIDDLEWARE = [
@@ -120,7 +120,25 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+MEDIA_ROOT = os.path.join(STATIC_URL, 'latex')
+
+ALLOWED_FILE_TYPES = ('.pdf', '.doc', '.docx', '.txt', '.tex')
+
+# Set the file size limit (in bytes)
+MAX_FILE_SIZE = 5242880  # 5MB
+
+# Configure the file upload settings
+FILE_UPLOAD_HANDLERS = [
+    'django.core.files.uploadhandler.MemoryFileUploadHandler',
+    'django.core.files.uploadhandler.TemporaryFileUploadHandler',
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'zaverecne_zadanie.User'
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend"
+]

@@ -2,8 +2,11 @@ import os
 import re
 from app.settings import STATIC_URL
 
+from app.zaverecne_zadanie.models import Task
 
-def parse_latex():
+
+def parse_latex(path, batch_name):
+    print('PATH', path)
     folder_path = os.path.join(STATIC_URL, "latex")
     parsed_data = []
     for filename in os.listdir(folder_path):
@@ -37,5 +40,6 @@ def parse_latex():
                     # create dictionary for each task-solution pair
                     task_dict = {'task': task.strip(), 'solution': equation.strip(), 'image': image,
                                  'batch': filename[:-4]}
+
                     parsed_data.append(task_dict)
     print(parsed_data)
