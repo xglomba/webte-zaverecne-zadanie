@@ -3,11 +3,8 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
-from .models import Batch, Task, TaskSubmission, User
 
-admin.site.register(Batch)
-admin.site.register(Task)
-admin.site.register(TaskSubmission)
+from .models import Batch, Task, TaskSubmission, User
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -48,3 +45,30 @@ class CustomUserAdmin(UserAdmin):
 
 
 admin.site.register(User, CustomUserAdmin)
+
+
+class BatchAdmin(admin.ModelAdmin):
+    list_display = ['name', 'file', 'allowed_from', 'allowed_to', 'points']
+    list_filter = ['name', 'file', 'allowed_from', 'allowed_to', 'points']
+    search_fields = ['name', 'file', 'allowed_from', 'allowed_to', 'points']
+
+
+admin.site.register(Batch, BatchAdmin)
+
+
+class TaskAdmin(admin.ModelAdmin):
+    list_display = ['id', 'image', 'batch']
+    list_filter = ['id', 'task', 'image', 'solution', 'batch']
+    search_fields = ['id', 'task', 'image', 'solution']
+
+
+admin.site.register(Task, TaskAdmin)
+
+
+class TaskSubmissionAdmin(admin.ModelAdmin):
+    list_display = ['user', 'task', 'points']
+    list_filter = ['user', 'task', 'points']
+    search_fields = ['user', 'task', 'points']
+
+
+admin.site.register(TaskSubmission, TaskSubmissionAdmin)

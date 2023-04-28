@@ -120,7 +120,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-MEDIA_ROOT = os.path.join(STATIC_URL, 'latex')
+MEDIA_ROOT = STATIC_URL
 
 ALLOWED_FILE_TYPES = ('.pdf', '.doc', '.docx', '.txt', '.tex')
 
