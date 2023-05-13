@@ -2,8 +2,6 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-
-
 from .models import Batch, Task, TaskSubmission, User
 
 
@@ -69,6 +67,8 @@ class TaskSubmissionAdmin(admin.ModelAdmin):
     list_display = ['user', 'task', 'points']
     list_filter = ['user', 'task', 'points']
     search_fields = ['user', 'task', 'points']
+
+    change_list_template = 'zaverecne_zadanie/admin/change_list.html'
 
 
 admin.site.register(TaskSubmission, TaskSubmissionAdmin)

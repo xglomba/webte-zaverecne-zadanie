@@ -1,11 +1,12 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LogoutView
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
-
+from .models import TaskSubmission
 from django.contrib.auth.decorators import user_passes_test
+from .utils import export_task_submissions_to_csv
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -54,3 +55,10 @@ class HomeView(View):
 
     def get(self, request):
         return render(request, self.template_name)
+
+
+class ExportTaskSubmissionsView(View):
+    def get(self, request):
+        task_submissions = TaskSubmission.objects.all()
+
+        return export_task_submissions_to_csv(task_submissions)

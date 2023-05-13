@@ -1,10 +1,9 @@
-import os
+import csv
 import re
-from app.settings import STATIC_URL
+from django.http import HttpResponse
 
 
 def parse_latex(path):
-    print('PATH', path)
     parsed_data = []
     with open(path, 'r', encoding='utf-8') as file:
         content = file.read()
@@ -35,3 +34,26 @@ def parse_latex(path):
             task_dict = {'task': task.strip(), 'solution': equation.strip(), 'image': image}
             parsed_data.append(task_dict)
     return parsed_data
+
+
+def export_task_submissions_to_csv(task_submissions):
+    # Define the CSV field names
+    field_names = ['task_id', 'batch_name', 'first_name', 'last_name', 'ais_id', 'points']
+
+    # Create the HTTP response object with CSV content type and attachment
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="task_submissions.csv"'
+
+    # Write the CSV data to the response
+    writer = csv.DictWriter(response, fieldnames=field_names)
+    writer.writeheader()
+    for submission in task_submissions:
+        writer.writerow({
+            'task_id': submission.task.id,
+            'batch_name': submission.task.batch.name,
+            'first_name': submission.user.first_name,
+            'last_name': submission.user.last_name,
+            'ais_id': submission.user.ais_id,
+            'points': submission.points,
+        })
+    return response

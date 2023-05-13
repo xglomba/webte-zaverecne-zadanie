@@ -6,7 +6,6 @@ from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
 from django.core.files.images import ImageFile
 from django.db import models
-
 from zaverecne_zadanie.utils import parse_latex
 
 
@@ -51,8 +50,11 @@ class Batch(models.Model):
                 print("Latex image path: " + task.get('image'))
                 source_path = os.path.join(tmp_unzipped_folder_path, 'images',
                                            task.get('image')).replace('\\', '/')
-                with open(source_path, 'rb') as f:
-                    new_task.image.save(task.get('image'), ImageFile(f))
+                try:
+                    with open(source_path, 'rb') as f:
+                        new_task.image.save(task.get('image'), ImageFile(f))
+                except FileNotFoundError as e:
+                    pass
             new_task.save()
         if os.path.exists(tmp_unzipped_folder_path):
             shutil.rmtree(tmp_unzipped_folder_path)
