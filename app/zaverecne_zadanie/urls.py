@@ -7,6 +7,7 @@ urlpatterns = [
     path('login/', views.LoginView.as_view(), name='login'),
     path('logout/', views.CustomLogoutView.as_view(), name='logout'),
     path('home/', views.HomeView.as_view(), name='home'),
+    path('test/', views.TestView.as_view(), name='test'),
     path('', views.LoginView.as_view()),
     path('export-task-submissions/', views.ExportTaskSubmissionsView.as_view(), name='export_task_submissions'),
 ]

@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LogoutView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from .models import TaskSubmission
@@ -24,7 +24,7 @@ class LoginView(View):
     def get(self, request):
         if request.user.is_authenticated:
             if request.user.is_superuser:
-                return render_super_user_template(request, 'zaverecne_zadanie/teacher/home.html')
+                return redirect('admin:index')
             else:
                 return render_student_template(request, 'zaverecne_zadanie/students/home.html')
         return render(request, self.template_name)
@@ -37,7 +37,7 @@ class LoginView(View):
         if user is not None:
             login(request, user)
             if user.is_superuser:
-                return render_super_user_template(request, 'zaverecne_zadanie/teacher/home.html')
+                return redirect('admin:index')
             else:
                 return render_student_template(request, 'zaverecne_zadanie/students/home.html')
         else:
@@ -51,10 +51,32 @@ class CustomLogoutView(LogoutView):
 
 
 class HomeView(View):
-    template_name = 'zaverecne_zadanie/home.html'
+    template_name = 'zaverecne_zadanie/students/home.html'
 
     def get(self, request):
+        if request.user.is_superuser:
+            return redirect('admin:index')
+
         return render(request, self.template_name)
+
+    def post(self, request):
+        if request.user.is_superuser:
+            return redirect('admin:index')
+
+        return render(request, self.template_name)
+
+
+class TestView(View):
+    template_name = 'zaverecne_zadanie/test.html'
+
+    def get(self, request):
+        if request.user.is_superuser:
+            return redirect('admin:index')
+
+        return render(request, self.template_name)
+
+
+
 
 
 class ExportTaskSubmissionsView(View):

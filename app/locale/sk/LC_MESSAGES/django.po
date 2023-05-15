@@ -1,0 +1,125 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-15 09:27+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n "
+">= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
+#: .\app\settings.py:119
+msgid "English"
+msgstr ""
+
+#: .\app\settings.py:120
+msgid "Slovak"
+msgstr "Slovenčina"
+
+#: .\zaverecne_zadanie\models.py:15
+msgid "first_name"
+msgstr "Meno"
+
+#: .\zaverecne_zadanie\models.py:16
+msgid "last_name"
+msgstr "Priezvisko"
+
+#: .\zaverecne_zadanie\models.py:23
+msgid "name"
+msgstr "Názov"
+
+#: .\zaverecne_zadanie\models.py:24
+msgid "file"
+msgstr "Súbor"
+
+#: .\zaverecne_zadanie\models.py:25
+msgid "images"
+msgstr "Obrázky"
+
+#: .\zaverecne_zadanie\models.py:26 .\zaverecne_zadanie\models.py:89
+msgid "points"
+msgstr "Body"
+
+#: .\zaverecne_zadanie\models.py:27
+msgid "allowed_from"
+msgstr "Aktívne od"
+
+#: .\zaverecne_zadanie\models.py:28
+msgid "allowed_to"
+msgstr "Aktívne do"
+
+#: .\zaverecne_zadanie\models.py:31 .\zaverecne_zadanie\models.py:76
+msgid "batch"
+msgstr "Sada"
+
+#: .\zaverecne_zadanie\models.py:32
+msgid "batchs"
+msgstr "Sady"
+
+#: .\zaverecne_zadanie\models.py:73 .\zaverecne_zadanie\models.py:79
+#: .\zaverecne_zadanie\models.py:87
+msgid "task"
+msgstr "Úloha"
+
+#: .\zaverecne_zadanie\models.py:74
+msgid "solution"
+msgstr "Riešenie"
+
+#: .\zaverecne_zadanie\models.py:75
+msgid "image"
+msgstr "Obrázok"
+
+#: .\zaverecne_zadanie\models.py:80
+msgid "tasks"
+msgstr "Úlohy"
+
+#: .\zaverecne_zadanie\models.py:92
+msgid "task_submission"
+msgstr "Pridelená úloha"
+
+#: .\zaverecne_zadanie\models.py:93
+msgid "tasks_submissions"
+msgstr "Pridelené úlohy"
+
+msgid "See Profile"
+msgstr "Profil"
+
+msgid "General"
+msgstr "Všeobecné"
+
+msgid "Personal information"
+msgstr "Osobné údaje"
+
+msgid "Permissions"
+msgstr "Oprávnenia"
+
+msgid "Important dates"
+msgstr "Dôležité dátumy"
+
+msgid "Please enter your old password, for security's sake, and then enter your new password twice so we can verify you typed it in correctly."
+msgstr "Z bezpečnostných dôvodov zadajte svoje staré heslo a potom dvakrát zadajte nové heslo, aby sme mohli overiť, či ste ho zadali správne."
+
+msgid "First, enter a username and password. Then, you'll be able to edit more user options."
+msgstr "Najprv zadajte používateľské meno a heslo. Potom budete môcť upraviť ďalšie používateľské možnosti."
+
+msgid "Enter a username and password."
+msgstr "Zadajte používateľské meno a heslo."
+
+msgid "Please correct the error below."
+msgstr "Opravte chybu nižšie."
+
+msgid "Please correct the errors below."
+msgstr "Opravte chyby nižšie."
+
+msgid "great webte assigment - student"
+msgstr "skvele zaverecne zadanie - student"
