@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LogoutView
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.urls import reverse_lazy
 from django.views import View
 from .models import TaskSubmission
@@ -16,6 +16,14 @@ def render_super_user_template(request, template):
 
 def render_student_template(request, template):
     return render(request, template)
+
+
+def submit_math_view(request):
+    if request.method == 'POST':
+        math_content = request.POST.get('math_content')
+        return HttpResponse('Math content submitted successfully.')
+    else:
+        return HttpResponse('Invalid request method.')
 
 
 class LoginView(View):
@@ -74,9 +82,6 @@ class TestView(View):
             return redirect('admin:index')
 
         return render(request, self.template_name)
-
-
-
 
 
 class ExportTaskSubmissionsView(View):

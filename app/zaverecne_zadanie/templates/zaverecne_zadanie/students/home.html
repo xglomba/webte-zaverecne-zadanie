@@ -1,5 +1,10 @@
 {% extends "../base.html" %}
 
+<head>
+    ...
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</head>
+
 {% load i18n %}
 
 {% block content %}
@@ -14,16 +19,16 @@
         <li><a href="#">View Previous Assignments</a></li>
     </ul>
 
-    <form method="POST" action="">
+    <form method="POST" action="{% url 'test' %}">
         {% csrf_token %}
         <label for="math-editor">Solution</label><textarea id="math-editor" name="math_content"></textarea>
         <button type="submit">Submit</button>
     </form>
 
     <script>
-        // Wait for MathJax to load and then enable the editor
+
         MathJax.Hub.Configured(function () {
-            // Enable the mathematical editor
+
             CKEDITOR.replace('math-editor', {
                 extraPlugins: 'mathjax',
                 mathJaxLib: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_SVG'

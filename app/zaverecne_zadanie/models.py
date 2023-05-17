@@ -8,6 +8,7 @@ from django.core.files.images import ImageFile
 from django.db import models
 from zaverecne_zadanie.utils import parse_latex
 from django.utils.translation import gettext_lazy as _
+from tinymce.models import HTMLField
 
 
 class User(AbstractUser):
@@ -95,3 +96,6 @@ class TaskSubmission(models.Model):
 
     def __str__(self):
         return f'Task {self.task.id} (batch {self.task.batch.name}) - ({self.user.username} - {self.user.ais_id})'
+
+    class MathEditor(models.Model):
+        content = HTMLField()

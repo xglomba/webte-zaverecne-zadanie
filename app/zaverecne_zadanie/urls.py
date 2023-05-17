@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from . import views
+from .views import submit_math_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -10,4 +11,5 @@ urlpatterns = [
     path('test/', views.TestView.as_view(), name='test'),
     path('', views.LoginView.as_view()),
     path('export-task-submissions/', views.ExportTaskSubmissionsView.as_view(), name='export_task_submissions'),
+    path('submit_math/', submit_math_view, name='submit_math'),
 ]
