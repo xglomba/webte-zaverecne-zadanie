@@ -44,7 +44,7 @@ class Batch(models.Model):
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         super().save(force_insert=force_insert, force_update=force_update, using=using, update_fields=update_fields)
         tasks = parse_latex(self.file.path)
-        tmp_unzipped_folder_path = 'static/images/tmp'
+        tmp_unzipped_folder_path = '../static/images/tmp'
         if self.images:
             images_zip_path = self.images.path
             with zipfile.ZipFile(images_zip_path, 'r') as zip_ref:
