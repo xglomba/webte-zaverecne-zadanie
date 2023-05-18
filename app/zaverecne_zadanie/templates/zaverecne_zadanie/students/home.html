@@ -28,7 +28,7 @@
 
     <form method="POST" action="{% url 'submit_math' %}">
         {% csrf_token %}
-        <label for="math-editor">Solution</label><textarea id="math-editor" placeholder="When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+        <label for="math-editor">{% trans 'Solution' %}</label><textarea id="math-editor" placeholder="When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
         \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]" name="math_content"></textarea>
         <button type="submit">{% trans 'Submit' %}</button>
     </form>

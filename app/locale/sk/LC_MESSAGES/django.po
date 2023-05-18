@@ -119,6 +119,9 @@ msgstr "Vypracovať test"
 msgid "View Previous Assignments"
 msgstr "Predcházajúce testy"
 
+msgid "Solution"
+msgstr "Vypracovanie"
+
 #~ msgid "See Profile"
 #~ msgstr "Profil"
 
