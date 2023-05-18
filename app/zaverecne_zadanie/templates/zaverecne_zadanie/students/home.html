@@ -21,7 +21,7 @@
 
     <ul>
         <li><a href="#">{% trans 'Take the Exam' %}</a></li>
-        <li><a href="#">{% trans 'View Previous Assignments' %}</a></li>
+        <li><a {% url 'previousAssignments' %}> {% trans 'View Previous Assignments' %}</a></li>
     </ul>
 
     <form method="POST" action="{% url 'submit_math' %}">

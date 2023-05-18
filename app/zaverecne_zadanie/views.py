@@ -49,6 +49,9 @@ def user_tasks(request):
     return render(request, 'zaverecne_zadanie/students/home.html', context)
 
 
+def previous_assignments_view(request):
+    return render(request, 'zaverecne_zadanie/students/previousAssignments.html')
+
 class LoginView(View):
     template_name = 'zaverecne_zadanie/login.html'
 
@@ -120,3 +123,4 @@ class ExportTaskSubmissionsView(View):
         task_submissions = TaskSubmission.objects.all()
 
         return export_task_submissions_to_csv(task_submissions)
+

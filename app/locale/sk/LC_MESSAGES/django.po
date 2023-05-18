@@ -122,6 +122,12 @@ msgstr "Predcházajúce testy"
 msgid "Solution"
 msgstr "Vypracovanie"
 
+msgid "Previous assignments"
+msgstr "Predchádzajúce zadania"
+
+msgid "No previous assignments"
+msgstr "Žiadne predchádzajúce zadania"
+
 #~ msgid "See Profile"
 #~ msgstr "Profil"
 

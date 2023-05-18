@@ -1,0 +1,15 @@
+{% extends '../base.html' %}
+{% load static, i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% trans 'Previous assignments' %}</title>
+</head>
+<body>
+    {% block content %}
+        <p>{% trans 'No previous assignments' %} </p>
+    {% endblock content %}
+</body>
+</html>
