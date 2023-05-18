@@ -4,9 +4,12 @@ from django.contrib.auth.views import LogoutView
 from django.shortcuts import render, redirect, HttpResponse
 from django.urls import reverse_lazy
 from django.views import View
+
+from .forms import EquationForm
 from .models import TaskSubmission
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import user_passes_test, login_required
 from .utils import export_task_submissions_to_csv
+from .models import User, TaskSubmission, Task
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -24,6 +27,26 @@ def submit_math_view(request):
         return HttpResponse('Math content submitted successfully.')
     else:
         return HttpResponse('Invalid request method.')
+
+
+def equation_editor(request):
+    if request.method == 'POST':
+        form = EquationForm(request.POST)
+        if form.is_valid():
+            equation = form.cleaned_data['equation']
+            # Process the equation as needed
+    else:
+        form = EquationForm()
+    return render(request, 'home.html', {'form': form})
+
+
+@login_required
+def user_tasks(request):
+    user = request.user
+    task_assignments = TaskSubmission.objects.filter(user_id=user.id)
+    tasks = Task.objects.filter(id__in=task_assignments.values('task_id'))
+    context = {'tasks': tasks}
+    return render(request, 'zaverecne_zadanie/students/home.html', context)
 
 
 class LoginView(View):
@@ -72,6 +95,14 @@ class HomeView(View):
             return redirect('admin:index')
 
         return render(request, self.template_name)
+
+    @login_required
+    def user_tasks(request):
+        user = request.user
+        task_assignments = TaskSubmission.objects.filter(user_id=user.id)
+        tasks = Task.objects.filter(id__in=task_assignments.values('task_id'))
+        context = {'tasks': tasks}
+        return render(request, 'zaverecne_zadanie/students/home.html', context)
 
 
 class TestView(View):

@@ -2,35 +2,58 @@
 
 <head>
     ...
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
 </head>
 
 {% load i18n %}
 
 {% block content %}
-    <h1>Welcome, {{ user.username }}!</h1>
+    <h1>{% trans 'Welcome' %} {{ user.username }} </h1>
 
-    <h2>Choose an Option:</h2>
+    <h2>{% trans 'Choose an Option' %}</h2>
+    <h1>{% trans 'great webte assigment - student' %}</h1>
 
     <p> {{ user.username }} </p>
 
     <ul>
-        <li><a href="#">Take the Exam</a></li>
-        <li><a href="#">View Previous Assignments</a></li>
+        <li><a href="#">{% trans 'Take the Exam' %}</a></li>
+        <li><a href="#">{% trans 'View Previous Assignments' %}</a></li>
     </ul>
 
-    <form method="POST" action="{% url 'test' %}">
+    <form method="POST" action="{% url 'submit_math' %}">
         {% csrf_token %}
-        <label for="math-editor">Solution</label><textarea id="math-editor" name="math_content"></textarea>
-        <button type="submit">Submit</button>
+        <label for="math-editor">Solution</label><textarea id="math-editor" placeholder="When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+        \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]" name="math_content"></textarea>
+        <button type="submit">{% trans 'Submit' %}</button>
     </form>
 
+    <p>
+        {{ user.ais_id }}
+        {{ user.username }}
+        {{ user.email }}
+        {{ user.last_name }}
+        {{ batch.name }}
+        {{ task_submission.user }}
+    </p>
+
+    <h2>{% trans 'Tasks Assigned to ' %}{{ request.user.username }}</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task.solution }}</li>
+            {% empty %}
+            <li>{% trans 'No tasks assigned.' %}</li>
+        {% endfor %}
+    </ul>
+
     <script>
+        import CKEDITOR from "../../../../staticfiles/admin/js/vendor/xregexp/xregexp";
 
         MathJax.Hub.Configured(function () {
 
             CKEDITOR.replace('math-editor', {
-                extraPlugins: 'mathjax',
+                extraPlugins: 'MathJax',
                 mathJaxLib: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_SVG'
             });
 
