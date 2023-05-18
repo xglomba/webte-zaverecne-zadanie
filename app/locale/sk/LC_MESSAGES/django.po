@@ -122,6 +122,16 @@ msgstr "Predcházajúce testy"
 msgid "Solution"
 msgstr "Vypracovanie"
 
+msgid "Home"
+msgstr "Domov"
+
+msgid "Lang check"
+msgstr "Kontrola jazyka"
+
+msgid "Logout"
+msgstr "Odhlasenie"
+
+
 #~ msgid "See Profile"
 #~ msgstr "Profil"
 
