@@ -1,5 +1,7 @@
 {% extends "../base.html" %}
 {% load static %}
+{% load i18n %}
+
 <head>
     ...
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -11,15 +13,11 @@
 
 </head>
 
-{% load i18n %}
-
 {% block content %}
     <h1>{% trans 'Welcome' %} {{ user.username }} </h1>
 
     <h2>{% trans 'Choose an Option' %}</h2>
     <h1>{% trans 'great webte assigment - student' %}</h1>
-
-    <p> {{ user.username }} </p>
 
     <ul>
         <li><a href="#">{% trans 'Take the Exam' %}</a></li>
@@ -33,15 +31,6 @@
         <button type="submit">{% trans 'Submit' %}</button>
     </form>
 
-    <p>
-        {{ user.ais_id }}
-        {{ user.username }}
-        {{ user.email }}
-        {{ user.last_name }}
-        {{ batch.name }}
-        {{ task_submission.user }}
-    </p>
-
     <h2>{% trans 'Tasks Assigned to ' %}{{ request.user.username }}</h2>
     <ul>
         {% for task in tasks %}
@@ -52,30 +41,29 @@
     </ul>
 
     <div id="divMathOut">
-        a
+
     </div>
     <script>import {typeset} from 'mathjax';</script>
     <script>
-
-
 
         window.addEventListener('DOMContentLoaded', () => {
             typeset();
         });
 
-        {#import CKEDITOR from "../../../../staticfiles/admin/js/vendor/xregexp/xregexp";#}
-        {##}
-        {#MathJax.Hub.Configured(function () {#}
-        {##}
-        {#    CKEDITOR.replace('math-editor', {#}
-        {#        extraPlugins: 'MathJax',#}
-        {#        mathJaxLib: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_SVG'#}
-        {#    });#}
-        {##}
-        {#    // Render math using MathJax in the preview element#}
-        {#    CKEDITOR.instances['math-editor'].on('change', function () {#}
-        {#        MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'math-preview']);#}
-        {#    });#}
+        import CKEDITOR from "../../../../staticfiles/admin/js/vendor/xregexp/xregexp";
+
+        MathJax.Hub.Configured(function () {
+
+            CKEDITOR.replace('math-editor', {
+                extraPlugins: 'MathJax',
+                mathJaxLib: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_SVG'
+            });
+
+            // Render math using MathJax in the preview element
+            CKEDITOR.instances['math-editor'].on('change', function () {
+                MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'math-preview']);
+            });
+        });
 
     </script>
 {% endblock %}

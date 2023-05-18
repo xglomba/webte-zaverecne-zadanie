@@ -1,54 +1,9 @@
-/*html,*/
-/*body {*/
-/*    height: 100%;*/
-/*    margin: 0;*/
-/*    max-width: 100%;*/
-/*    overflow: hidden;*/
-/*}*/
-
-/*#btn-nav {*/
-/*    width: 100px;*/
-/*    float: right;*/
-/*    margin-right: 25px;*/
-/*}*/
-
-/*.wrapper {*/
-/*    min-height: 100%;*/
-/*    margin-bottom: -50px;*/
-/*}*/
-
 #footer,
 .push {
     height: 50px;
     font-size: 13px;
     margin-top: 1.5rem;
 }
-
-/*#btn-enter {*/
-/*    width: 90px;*/
-/*}*/
-
-/*#treecity {*/
-/*    position: absolute;*/
-/*    top: 70%;*/
-/*    left: 50%;*/
-/*    margin-right: -50%;*/
-/*    transform: translate(-50%, -50%);*/
-/*    font-size: 15px;*/
-/*}*/
-
-/*.side-label {*/
-/*    width: 80px;*/
-/*}*/
-
-/*#no-data {*/
-/*    position: absolute;*/
-/*    top: 50%;*/
-/*    left: 50%;*/
-/*    margin-right: -50%;*/
-/*    transform: translate(-50%, -50%);*/
-/*    font-size: 15px*/
-/*}*/
 
 ul {
     list-style-type: none;
