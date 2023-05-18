@@ -122,11 +122,15 @@ msgstr "Predcházajúce testy"
 msgid "Solution"
 msgstr "Vypracovanie"
 
-msgid "Previous assignments"
-msgstr "Predchádzajúce zadania"
+msgid "Home"
+msgstr "Domov"
 
-msgid "No previous assignments"
-msgstr "Žiadne predchádzajúce zadania"
+msgid "Lang check"
+msgstr "Kontrola jazyka"
+
+msgid "Logout"
+msgstr "Odhlasenie"
+
 
 #~ msgid "See Profile"
 #~ msgstr "Profil"
