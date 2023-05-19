@@ -99,25 +99,5 @@ class TaskSubmission(models.Model):
     def __str__(self):
         return f'Task {self.task.id} (batch {self.task.batch.name}) - ({self.user.username} - {self.user.ais_id})'
 
-    # @login_required
-    # def user_tasks(request):
-    #     user = request.user
-    #     tasks = Task.objects.filter(usertask__user=user)
-    #     context = {'tasks': tasks}
-    #     return render(request, 'zaverecne_zadanie/students/home.html', context)
-
-    class MathEditor(models.Model):
-        content = HTMLField()
-
 
 TaskSubmission(models.Model)
-
-
-class MathEditorTasker(models.Model):
-    task_content = TaskSubmission.task
-
-    print(task_content)
-
-    #     task_content = TaskSubmission()
-    #     print(task_content)
-    # tsk_c = task_content.task[1]

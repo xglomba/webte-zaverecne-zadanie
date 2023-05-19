@@ -33,9 +33,11 @@
 <body>
 
 <!-- Bootstrap Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand">
+            <i class="fas fa-book-open"> </i> &nbsp; Student
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -64,48 +66,19 @@
                         </li>
                     {% endif %}
                 {% endfor %}
+                <div class="vr text-white"></div>
+                <li class="nav-item" style="margin-right: 0; margin-left: 1em">
+                    <a class="nav-link" href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+                </li>
             </ul>
-            <form action="{% url 'logout' %}" method="post">
-                {% csrf_token %}
-                <button type="submit">{% trans 'Logout' %}</button>
-            </form>
         </div>
     </div>
 </nav>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="col-sm">
-        <a class="navbar-brand flex-grow-1" style="margin-left: 25px">
-            {% block nav-content %}
-                <i class="fas fa-book-open"> </i> &nbsp; Student
-            {% endblock nav-content %}
-        </a>
-    </div>
-
-    <div class="col-sm">
-        {% block btn-nav %}
-            {#                    <a href="{% url 'backend' %}" class="btn btn-outline-info btn-sm border-light" id="btn-nav"> LOGIN </a>#}
-        {% endblock btn-nav %}
-    </div>
-
-</nav>
-
 {#<!-- ROOT -->#}
-{#{% block content %} {% endblock content %}#}
 
 <div class="container">
     {% block content %} {% endblock content %}
 </div>
-
-<footer class="bg-dark text-center text-lg-start text-light" id="footer">
-    <div class="text-center p-3" style="background-color: rgba(0,0,0,0.2)">
-        Copyright &copy; {% now "Y" %} <span>WEBTE2 @ FEI STU</span> | Made with
-        <a href="https://www.djangoproject.com/" target="_blank" style="color: aqua; text-decoration: none;">
-            DJANGO </a>
-        <i class="text-info fas fa-book-dead blink_me" style="font-size: 15px;"> </i>
-
-
-    </div>
-</footer>
 
 <!-- Bootstrap JS CDN -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
