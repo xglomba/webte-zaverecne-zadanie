@@ -56,6 +56,13 @@
         });
 
         function fillTaskModal(id, task, image){
+            if (image) {
+                document.getElementById("task-image").src = `/${image}`;
+                document.getElementById("task-image").style.display = "block";
+            }
+            else {
+                document.getElementById("task-image").style.display = "none";
+            }
             let str = insertNewlines(task, 100);
             console.log(str);
             str = str.replaceAll('$', "");
