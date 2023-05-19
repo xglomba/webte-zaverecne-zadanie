@@ -1,0 +1,103 @@
+{% extends "./base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <div class="container" id="manual">
+        <h1>Manual</h1>
+
+        <div class="card">
+            <div class="card-header">
+                <h5>Návod na spustenie aplikácie</h5>
+            </div>
+            <div class="card-body">
+                <ol>
+                    <li>cd /app</li>
+                    <li>docker compose up –build</li>
+                    <li>Aplikácia odteraz beží na adrese 0.0.0.0:8000, do vyhľadávača zadáme adresu 127.0.0.1:8000.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="card mt-2">
+            <div class="card-header">
+                <h5>Návod na vytvorenie učiteľa</h5>
+            </div>
+            <div class="card-body">
+                <ol>
+                    <li>cd /app</li>
+                    <li>python manage.py createadmin</li>
+                    <li>Pokračujeme podľa pokynov v aplikácií.</li>
+                    <li>Zadané údaje sa uložia do databázy sqlite3.</li>
+                    <li>Login užívateľa je s prefixom x, čiže ak sa volá admin, login bude xadmin, heslo ostáva
+                        nezmenené.
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="card mt-2">
+            <div class="card-header">
+                <h5>Návod na vytvorenie úloh a priradenie úlohy</h5>
+            </div>
+            <div class="card-body">
+                <ol>
+                    <li>Postupovať podľa priloženého videa.</li>
+                    <li>V admin portály učiteľ vytvorí Batch úloh.</li>
+                    <li>Z Batchu úloh sa vygenerujú Tasks.</li>
+                    <li>Pomocou funkcie TaskAssignments učiteľ priradí Tasky žiakovi.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="card mt-2">
+            <div class="card-header">
+                <h5>Návod na vytvorenie žiaka</h5>
+            </div>
+            <div class="card-body">
+                <ol>
+                    <li>Vytvoriť žiaka môže iba učiteľ.</li>
+                    <li>V admin portály si v hlavnej sekcií vyberie Users/Používatelia, zadá New user a pokračuje vo
+                        vypĺňaní.
+                    </li>
+                    <li>Na konci odklikne Save a žiak je vytvorený.</li>
+                    <li>Žiakov login je takisto s prefixom x, čiže ak sa žiak volá Ferko, jeho login je xFerko.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="card mt-2">
+            <div class="card-header">
+                <h5>Návod na vypracovanie úloh žiaka</h5>
+            </div>
+            <div class="card-body">
+                <ol>
+                    <li>Žiak sa prihlási do svojho účtu, čím sa mu zobrazí tabuľka priradených úloh.</li>
+                    <li>Kliknutím na tlačidlo Solve sa vygeneruje modal so znením úlohy a matematický editor.</li>
+                    <li>Odoslanie výsledku sa realizuje okamžite stlačením tlačidla Submit.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Add more card sections for other manual sections -->
+    </div>
+    <button type="button" class="btn btn-primary mt-4" onclick="downloadAsPDF()">Download as PDF</button>
+
+    <!-- Include jQuery and the jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
+    <script>
+    function downloadAsPDF() {
+        const element = document.getElementById('manual');
+        const opt = {
+            margin: 0,
+            filename: 'manual.pdf',
+            image: { type: 'pdf', quality: 1 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'pt', format: 'a4', orientation: 'portrait' }
+        };
+        html2pdf().set(opt).from(element).save();
+    }
+</script>
+{% endblock %}
+
