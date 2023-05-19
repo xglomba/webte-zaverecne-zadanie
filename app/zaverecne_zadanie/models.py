@@ -37,6 +37,8 @@ class Batch(models.Model):
     def clean(self):
         # Check if a batch with the same file name already exists
         existing_batches = Batch.objects.filter(file__icontains=self.file.name)
+        if self.name:
+            existing_batches = existing_batches.exclude(name=self.name)
         if existing_batches.exists():
             # If a batch with the same file name exists, raise a validation error
             raise ValidationError({'file': ['A batch with the same file name already exists.']})

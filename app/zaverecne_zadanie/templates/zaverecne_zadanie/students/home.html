@@ -7,18 +7,43 @@
 </head>
 
 {% block content %}
-    <h1>{% trans 'Welcome' %} {{ user.username }} </h1>
-
-    <h2>{% trans 'Choose an Option' %}</h2>
-{#    <h1>{% trans 'great webte assigment - student' %}</h1>#}
-
-    <ul>
-        <li><a href="#">{% trans 'Take the Exam' %}</a></li>
-        <li><a {% url 'previousAssignments' %}> {% trans 'View Previous Assignments' %}</a></li>
-    </ul>
-
-    <h2>{% trans 'Tasks Assigned to ' %}{{ request.user.username }}</h2>
-    <table id="tasksTable">
+    <h1 class="text-center">{% trans 'Welcome' %} {{ user.username }} </h1>
+    <br>
+    <h2>{% trans 'Available batches' %}</h2>
+    <table id="batches-table">
+        <thead>
+        <tr>
+            <th>Batch ID</th>
+            <th>Points for batch</th>
+            <th>Generate task</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for batch in batches %}
+            <tr>
+                <td>{{ batch.name }}</td>
+                <td>{{ batch.points }}</td>
+                <td>
+                    <form id="generate-task-form" action="{% url 'generate-task' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" id="batch-name" name="batch-name">
+                        <button type="button" class="btn btn-outline-dark" onclick="generateTask('{{ batch.name }}')">
+                            GENERATE
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4">{% trans 'No batches available.' %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <h2>{% trans 'Assigned tasks ' %}{{ request.user.username }}</h2>
+    <table id="tasks-table">
         <thead>
         <tr>
             <th>Task ID</th>
@@ -34,8 +59,8 @@
                 <td>{{ task.task }}</td>
                 <td>{{ task.batch.name }}</td>
                 <td>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#task-modal" onclick='fillTaskModal("{{ task.id }}", "{{ task.task }}", "{{ task.image }}")'>
-                        solve
+                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#task-modal" onclick='fillTaskModal("{{ task.id }}", "{{ task.task }}", "{{ task.image }}")'>
+                        SOLVE
                     </button>
                 </td>
             </tr>
@@ -52,7 +77,8 @@
   <script src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('#tasksTable').DataTable();
+            $('#tasks-table').DataTable();
+            $('#batches-table').DataTable();
         });
 
         function fillTaskModal(id, task, image){
@@ -100,6 +126,11 @@
             }
 
             return result;
+        }
+
+        function generateTask(batchId) {
+            document.getElementById("batch-name").value = batchId;
+            document.getElementById("generate-task-form").submit();
         }
 
 

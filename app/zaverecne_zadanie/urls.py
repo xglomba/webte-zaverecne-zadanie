@@ -10,6 +10,6 @@ urlpatterns = [
     path('test/', views.TestView.as_view(), name='test'),
     path('', views.LoginView.as_view()),
     path('export-task-submissions/', views.ExportTaskSubmissionsView.as_view(), name='export_task_submissions'),
-    path('submit_math/', submit_math_view, name='submit_math'),
-    path('previousAssignments/', views.previous_assignments_view, name='previousAssignments'),
+    path('generate-task/', views.GenerateTaskView.as_view(), name='generate-task'),
+    path('submit_math/', submit_math_view, name='submit_math')
 ]
