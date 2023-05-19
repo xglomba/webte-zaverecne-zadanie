@@ -11,9 +11,9 @@
     <table id="batches-table">
         <thead>
         <tr>
-            <th>Batch ID</th>
-            <th>Points for batch</th>
-            <th>Generate task</th>
+            <th>{% trans 'Batch name' %}</th>
+            <th>{% trans 'Points for batch' %}</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -26,7 +26,7 @@
                         {% csrf_token %}
                         <input type="hidden" id="batch-name" name="batch-name">
                         <button type="button" class="btn btn-outline-dark" onclick="generateTask('{{ batch.name }}')">
-                            GENERATE
+                           {% trans 'GENERATE' %}
                         </button>
                     </form>
                 </td>
@@ -40,13 +40,13 @@
     </table>
     <br>
     <br>
-    <h2>{% trans 'Assigned tasks ' %}</h2>
+    <h2>{% trans 'Assigned tasks' %}</h2>
     <table class="mb-2" id="tasks-table">
         <thead>
         <tr>
-            <th>Task ID</th>
-            <th>Task</th>
-            <th>Batch</th>
+            <th>{% trans 'Task ID' %}</th>
+            <th>{% trans 'Task' %}</th>
+            <th>{% trans 'Batch' %}</th>
             <th></th>
         </tr>
         </thead>
@@ -61,10 +61,10 @@
                         <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
                                 data-bs-target="#task-modal"
                                 onclick='fillTaskModal("{{ task.task.id }}", "{{ task.task.task }}", "{{ task.task.image }}")'>
-                            SOLVE
+                           {% trans 'SOLVE' %}
                         </button>
                     {% else %}
-                        {{ task.task_submission.points }} Point/s
+                        {{ task.task_submission.points }} {% trans 'Point/s' %}
                     {% endif %}
                 </td>
             </tr>

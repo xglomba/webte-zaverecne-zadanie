@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-17 18:15+0000\n"
+"POT-Creation-Date: 2023-05-19 22:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,153 +19,316 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n "
 ">= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
 
-#: app/settings.py:125
+#: .\app\settings.py:125
 msgid "English"
-msgstr ""
+msgstr "Angličtina"
 
-#: app/settings.py:126
+#: .\app\settings.py:126
 msgid "Slovak"
 msgstr "Slovenčina"
 
-#: zaverecne_zadanie/models.py:18
+#: .\zaverecne_zadanie\models.py:18
 msgid "first_name"
 msgstr "Meno"
 
-#: zaverecne_zadanie/models.py:19
+#: .\zaverecne_zadanie\models.py:19
 msgid "last_name"
 msgstr "Priezvisko"
 
-#: zaverecne_zadanie/models.py:26
+#: .\zaverecne_zadanie\models.py:26
 msgid "name"
 msgstr "Názov"
 
-#: zaverecne_zadanie/models.py:27
+#: .\zaverecne_zadanie\models.py:27
 msgid "file"
 msgstr "Súbor"
 
-#: zaverecne_zadanie/models.py:28
+#: .\zaverecne_zadanie\models.py:28
 msgid "images"
 msgstr "Obrázky"
 
-#: zaverecne_zadanie/models.py:29 zaverecne_zadanie/models.py:92
+#: .\zaverecne_zadanie\models.py:29 .\zaverecne_zadanie\models.py:94
 msgid "points"
 msgstr "Body"
 
-#: zaverecne_zadanie/models.py:30
+#: .\zaverecne_zadanie\models.py:30
 msgid "allowed_from"
 msgstr "Aktívne od"
 
-#: zaverecne_zadanie/models.py:31
+#: .\zaverecne_zadanie\models.py:31
 msgid "allowed_to"
 msgstr "Aktívne do"
 
-#: zaverecne_zadanie/models.py:34 zaverecne_zadanie/models.py:79
+#: .\zaverecne_zadanie\models.py:34 .\zaverecne_zadanie\models.py:81
 msgid "batch"
 msgstr "Sada"
 
-#: zaverecne_zadanie/models.py:35
+#: .\zaverecne_zadanie\models.py:35
 msgid "batchs"
 msgstr "Sady"
 
-#: zaverecne_zadanie/models.py:76 zaverecne_zadanie/models.py:82
-#: zaverecne_zadanie/models.py:90
+#: .\zaverecne_zadanie\models.py:78 .\zaverecne_zadanie\models.py:84
+#: .\zaverecne_zadanie\models.py:92
 msgid "task"
 msgstr "Úloha"
 
-#: zaverecne_zadanie/models.py:77
+#: .\zaverecne_zadanie\models.py:79
 msgid "solution"
 msgstr "Riešenie"
 
-#: zaverecne_zadanie/models.py:78
+#: .\zaverecne_zadanie\models.py:80
 msgid "image"
 msgstr "Obrázok"
 
-#: zaverecne_zadanie/models.py:83
+#: .\zaverecne_zadanie\models.py:85
 msgid "tasks"
 msgstr "Úlohy"
 
-#: zaverecne_zadanie/models.py:95
+#: .\zaverecne_zadanie\models.py:97
 msgid "task_submission"
 msgstr "Pridelená úloha"
 
-#: zaverecne_zadanie/models.py:96
+#: .\zaverecne_zadanie\models.py:98
 msgid "tasks_submissions"
 msgstr "Pridelené úlohy"
 
-#: zaverecne_zadanie/templates/zaverecne_zadanie/students/home.html:13
-msgid "Welcome"
-msgstr "Vitaj"
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\admin\change_list.html:12
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\admin\change_list.html:25
+msgid "Export to CSV"
+msgstr "Exportovať do CSV"
 
-#: zaverecne_zadanie/templates/zaverecne_zadanie/students/home.html:15
-msgid "Choose an Option"
-msgstr "Vyber si možnosť"
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\base.html:6
+msgid "WEBTE FINAL ASSIGNMENT"
+msgstr "WEBTE ZAVERECNE ZADANIE"
 
-#: zaverecne_zadanie/templates/zaverecne_zadanie/test.html:6
-msgid "great webte assigment - student"
-msgstr "skvele zaverecne zadanie - student"
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\base.html:40
+msgid "Student"
+msgstr "Študent"
 
-msgid "Submit"
-msgstr "Vlož odpoveď"
-
-msgid "Tasks Assigned to "
-msgstr "Úlohy pre používateľa "
-
-msgid "No tasks assigned."
-msgstr "Žiadne úlohy"
-
-msgid "Take the Exam"
-msgstr "Vypracovať test"
-
-msgid "View Previous Assignments"
-msgstr "Predcházajúce testy"
-
-msgid "Solution"
-msgstr "Vypracovanie"
-
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\base.html:49
 msgid "Home"
 msgstr "Domov"
 
-msgid "Lang check"
-msgstr "Kontrola jazyka"
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\base.html:52
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:11
+msgid "Manual"
+msgstr "Návod"
 
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\base.html:72
 msgid "Logout"
-msgstr "Odhlasenie"
+msgstr "Odhlásenie"
 
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\login.html:22
+msgid "Username"
+msgstr "Používateľské meno"
 
-#~ msgid "See Profile"
-#~ msgstr "Profil"
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\login.html:26
+msgid "Password"
+msgstr "Heslo"
 
-#~ msgid "General"
-#~ msgstr "Všeobecné"
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\login.html:17
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\login.html:29
+msgid "Login"
+msgstr "Prihlásenie"
 
-#~ msgid "Personal information"
-#~ msgstr "Osobné údaje"
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:17
+msgid ""
+"Application is now running on the address 0.0.0.0:8000, we enter the "
+"127.0.0.1:8000 into the browser."
+msgstr "Aplikácia odteraz beží na adrese 0.0.0.0:8000, do vyhľadávača zadáme adresu 127.0.0.1:8000."
 
-#~ msgid "Permissions"
-#~ msgstr "Oprávnenia"
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:24
+msgid "How to create teacher"
+msgstr "Návod na vytvorenie učiteľa"
 
-#~ msgid "Important dates"
-#~ msgstr "Dôležité dátumy"
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:30
+msgid "Follow the steps in the console."
+msgstr "Pokračujeme podľa pokynov v aplikácií."
 
-#~ msgid ""
-#~ "Please enter your old password, for security's sake, and then enter your "
-#~ "new password twice so we can verify you typed it in correctly."
-#~ msgstr ""
-#~ "Z bezpečnostných dôvodov zadajte svoje staré heslo a potom dvakrát "
-#~ "zadajte nové heslo, aby sme mohli overiť, či ste ho zadali správne."
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:31
+msgid "Credentials are now stored in the SQLite3 database."
+msgstr "Zadané údaje sa uložia do databázy sqlite3."
 
-#~ msgid ""
-#~ "First, enter a username and password. Then, you'll be able to edit more "
-#~ "user options."
-#~ msgstr ""
-#~ "Najprv zadajte používateľské meno a heslo. Potom budete môcť upraviť "
-#~ "ďalšie používateľské možnosti."
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:32
+msgid ""
+"User login is created as last name with <x> prefix, meaning that if teachers "
+"last name is Johnson, his login is xJohnson. Password remains the same."
+msgstr "Login užívateľa je vytvorený ako priezvisko s prefixom x, čiže ak je jeho priezvisko Kovac, login bude xKovac, heslo ostáva nezmenené."
 
-#~ msgid "Enter a username and password."
-#~ msgstr "Zadajte používateľské meno a heslo."
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:41
+msgid "How to create and assign the task"
+msgstr "Návod na vytvorenie úloh a priradenie úlohy"
 
-#~ msgid "Please correct the error below."
-#~ msgstr "Opravte chybu nižšie."
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:45
+msgid "Follow steps in video tutorial."
+msgstr "Postupujeme podľa priloženého videa."
 
-#~ msgid "Please correct the errors below."
-#~ msgstr "Opravte chyby nižšie."
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:46
+msgid "In admin portal, obly teacher is able to create a batch of tasks."
+msgstr "V admin portáli učiteľ vytvorí sadu úloh."
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:47
+msgid "From this batch are tasks generated automatically."
+msgstr "Zo sady sa automaticky vygenerujú jednotlivé úlohy."
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:48
+msgid ""
+"By creating new TaskSubmission teacher can assign the assignment to student."
+msgstr "Pomocou vytvorenia novej inštancie TaskSubmission/Pridelená úloha učiteľ priradí úlohu žiakovi."
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:55
+msgid "How to create a student"
+msgstr "Návod na vytvorenie žiaka"
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:59
+msgid "Only teacher is able to create students."
+msgstr "Vytvoriť žiaka môže iba učiteľ."
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:60
+msgid ""
+"In admin portal, in the main section, selecting Add user teacher can create "
+"new student by filling the necessary fields."
+msgstr "V admin portáli sa v hlavnej sekcií vyberie Users/Používatelia, klikne sa na Pridať používateľ a pokračuje sa vo vypĺňaní."
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:63
+msgid ""
+"By clicking the Save button student is created and stored in the SQLite3 "
+"database."
+msgstr "Po kliknutí na Save/Uložiť button sa žiak vytvorí a uloží do databázy."
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:64
+msgid ""
+"Students username is automatically created with <x> prefix (for example if "
+"students last name is Mrkvicka, his login is xMrkvicka."
+msgstr "Žiakov login je takisto priezvisko s prefixom x, čiže ak sa žiak volá Mrkvicka, jeho login je xMrkvicka."
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:71
+msgid "How can student solve the assignment"
+msgstr "Návod na vypracovanie úloh žiaka"
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:75
+msgid ""
+"After student is signed in, table containing available batches is shown. "
+"Student can generate task after clicking on the Generate button, in batch "
+"table."
+msgstr "Žiak sa prihlási do svojho účtu, čím sa mu zobrazí tabuľka z dostupnými sadami úloh. Študent si môže vygenerovať úlohu po kliknutí na tlačidlo Vygenerovať."
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:76
+msgid ""
+"Another table on this subpage is containing tasks submitted the student. If "
+"the task was solved by student, points for this task is shown. If task was "
+"not solved, Solve button is shown."
+msgstr "V ďalšej tabuľke na tejto podstránke sú zobrazené priradené úlohy. Pokiaľ riešenie úlohy bolo odovzdané študentom, sú zobrazené body získané za túto úlohu. Pokiaľ úloha nebola vyriešená, je zobrazené tlačidlo Vyriešiť."
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:77
+msgid ""
+"After clicking Solve button, modal with task and mathematic editor is opened."
+msgstr "Kliknutím na tlačidlo Vyriešiť sa vygeneruje modal so znením úlohy a matematický editor."
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:78
+msgid ""
+"After clicking on Submit button, solution is automatically sended and "
+"evaluated."
+msgstr "Odoslanie a vyhodnotenie výsledku sa realizuje okamžite stlačením tlačidla Odovzdať."
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\manual.html:85
+msgid "Download as PDF"
+msgstr "Stiahnuť ako PDF"
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\students\home.html:10
+msgid "Available batches"
+msgstr "Dostupné sady"
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\students\home.html:14
+#, fuzzy
+#| msgid "batch"
+msgid "Batch name"
+msgstr "Názov sady"
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\students\home.html:15
+msgid "Points for batch"
+msgstr "Body za sadu"
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\students\home.html:29
+msgid "GENERATE"
+msgstr "VYGENEROVAŤ"
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\students\home.html:36
+msgid "No batches available."
+msgstr "Žiadne dostupné sady."
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\students\home.html:43
+msgid "Assigned tasks"
+msgstr "Priradené úlohy"
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\students\home.html:47
+msgid "Task ID"
+msgstr "ID úlohy"
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\students\home.html:48
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\students\task_modal.html:7
+msgid "Task"
+msgstr "Úloha"
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\students\home.html:49
+msgid "Batch"
+msgstr "Sada"
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\students\home.html:64
+msgid "SOLVE"
+msgstr "VYRIEŠIŤ"
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\students\home.html:67
+msgid "Point/s"
+msgstr "Bod/y"
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\students\home.html:73
+msgid "No tasks assigned."
+msgstr "Žiadne priradené úlohy"
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\students\task_modal.html:11
+msgid "Task assignment"
+msgstr "Znenie úlohy"
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\students\task_modal.html:15
+msgid "Your solution"
+msgstr "Riešenie"
+
+#: .\zaverecne_zadanie\templates\zaverecne_zadanie\students\task_modal.html:33
+msgid "Submit"
+msgstr "Odovzdať"
+
+msgid "See Profile"
+msgstr "Profil"
+
+msgid "Personal information"
+msgstr "Osobné údaje"
+
+msgid "Permissions"
+msgstr "Oprávnenia"
+
+msgid "Important dates"
+msgstr "Dôležité dátumy"
+
+ msgid ""
+"Please enter your old password, for security's sake, and then enter your "
+"new password twice so we can verify you typed it in correctly."
+msgstr ""
+"Z bezpečnostných dôvodov zadajte svoje staré heslo a potom dvakrát "
+"zadajte nové heslo, aby sme mohli overiť, či ste ho zadali správne."
+
+msgid ""
+"First, enter a username and password. Then, you'll be able to edit more "
+"user options."
+msgstr ""
+"Najprv zadajte používateľské meno a heslo. Potom budete môcť upraviť "
+"ďalšie používateľské možnosti."
+
+msgid "Enter a username and password."
+msgstr "Zadajte používateľské meno a heslo."
+
+msgid "Please correct the error below."
+msgstr "Opravte chybu nižšie."
+
+msgid "Please correct the errors below."
+msgstr "Opravte chyby nižšie."

@@ -8,80 +8,77 @@
 
         <div class="card">
             <div class="card-header">
-                <h5>Návod na spustenie aplikácie</h5>
+                <h5>{% trans 'Manual' %}</h5>
             </div>
             <div class="card-body">
                 <ol>
                     <li>cd /app</li>
                     <li>docker compose up –build</li>
-                    <li>Aplikácia odteraz beží na adrese 0.0.0.0:8000, do vyhľadávača zadáme adresu 127.0.0.1:8000.</li>
+                    <li>{% trans 'Application is now running on the address 0.0.0.0:8000, we enter the 127.0.0.1:8000 into the browser.' %}</li>
                 </ol>
             </div>
         </div>
 
         <div class="card mt-2">
             <div class="card-header">
-                <h5>Návod na vytvorenie učiteľa</h5>
+                <h5>{% trans 'How to create teacher' %}</h5>
             </div>
             <div class="card-body">
                 <ol>
                     <li>cd /app</li>
                     <li>python manage.py createadmin</li>
-                    <li>Pokračujeme podľa pokynov v aplikácií.</li>
-                    <li>Zadané údaje sa uložia do databázy sqlite3.</li>
-                    <li>Login užívateľa je s prefixom x, čiže ak sa volá admin, login bude xadmin, heslo ostáva
-                        nezmenené.
-                    </li>
+                    <li>{% trans 'Follow the steps in the console.' %}</li>
+                    <li>{% trans 'Credentials are now stored in the SQLite3 database.' %}</li>
+                    <li>{% trans 'User login is created as last name with <x> prefix, meaning that if teachers last name is Johnson, his login is xJohnson. Password remains the same.'%}</li>
                 </ol>
             </div>
         </div>
 
         <div class="card mt-2">
             <div class="card-header">
-                <h5>Návod na vytvorenie úloh a priradenie úlohy</h5>
+                <h5>{% trans 'How to create and assign the task' %}</h5>
             </div>
             <div class="card-body">
                 <ol>
-                    <li>Postupovať podľa priloženého videa.</li>
-                    <li>V admin portály učiteľ vytvorí Batch úloh.</li>
-                    <li>Z Batchu úloh sa vygenerujú Tasks.</li>
-                    <li>Pomocou funkcie TaskAssignments učiteľ priradí Tasky žiakovi.</li>
+                    <li>{% trans 'Follow steps in video tutorial.' %}</li>
+                    <li>{% trans 'In admin portal, obly teacher is able to create a batch of tasks.' %}</li>
+                    <li>{% trans 'From this batch are tasks generated automatically.' %}</li>
+                    <li>{% trans 'By creating new TaskSubmission teacher can assign the assignment to student.' %}</li>
                 </ol>
             </div>
         </div>
 
         <div class="card mt-2">
             <div class="card-header">
-                <h5>Návod na vytvorenie žiaka</h5>
+                <h5>{% trans 'How to create a student' %}</h5>
             </div>
             <div class="card-body">
                 <ol>
-                    <li>Vytvoriť žiaka môže iba učiteľ.</li>
-                    <li>V admin portály si v hlavnej sekcií vyberie Users/Používatelia, zadá New user a pokračuje vo
-                        vypĺňaní.
-                    </li>
-                    <li>Na konci odklikne Save a žiak je vytvorený.</li>
-                    <li>Žiakov login je takisto s prefixom x, čiže ak sa žiak volá Ferko, jeho login je xFerko.</li>
+                    <li>{% trans 'Only teacher is able to create students.' %}</li>
+                    <li>{% trans 'In admin portal, in the main section, selecting Add user teacher can create new student by filling the necessary fields.' %}</li>
+                    <li>{% trans 'By clicking the Save button student is created and stored in the SQLite3 database.' %}</li>
+                    <li>{% trans 'Students username is automatically created with <x> prefix (for example if students last name is Mrkvicka, his login is xMrkvicka.' %}</li>
                 </ol>
             </div>
         </div>
 
         <div class="card mt-2">
             <div class="card-header">
-                <h5>Návod na vypracovanie úloh žiaka</h5>
+                <h5>{% trans 'How can student solve the assignment' %}</h5>
             </div>
             <div class="card-body">
                 <ol>
-                    <li>Žiak sa prihlási do svojho účtu, čím sa mu zobrazí tabuľka priradených úloh.</li>
-                    <li>Kliknutím na tlačidlo Solve sa vygeneruje modal so znením úlohy a matematický editor.</li>
-                    <li>Odoslanie výsledku sa realizuje okamžite stlačením tlačidla Submit.</li>
+                    <li>{% trans 'After student is signed in, table containing available batches is shown. Student can generate task after clicking on the Generate button, in batch table.' %}</li>
+                    <li>{% trans 'Another table on this subpage is containing tasks submitted the student. If the task was solved by student, points for this task is shown. If task was not solved, Solve button is shown.' %}</li>
+                    <li>{% trans 'After clicking Solve button, modal with task and mathematic editor is opened.' %}</li>
+                    <li>{% trans 'After clicking on Submit button, solution is automatically sended and evaluated.'  %}</li>
                 </ol>
             </div>
         </div>
 
         <!-- Add more card sections for other manual sections -->
     </div>
-    <button type="button" class="btn btn-outline-dark mt-4" onclick="downloadAsPDF()">Download as PDF</button>
+    <button type="button" class="btn btn-outline-dark mt-4" onclick="downloadAsPDF()">{% trans 'Download as PDF'%}</button>
 
     <!-- Include jQuery and the jsPDF library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
