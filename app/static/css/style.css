@@ -42,22 +42,6 @@ label {
     margin-bottom: 1em;
 }
 
-button[type="submit"] {
-    background-color: black;
-    color: white;
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button[type="submit"]:hover {
-    background-color: white;
-    color: black;
-}
-
 .katex-html {
     width: fit-content;
 }

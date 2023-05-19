@@ -1,7 +1,9 @@
 import csv
 import re
-from django.http import HttpResponse
 
+from django.http import HttpResponse
+from sympy import simplify, Eq, latex
+from sympy.parsing.latex import parse_latex as pl
 
 def parse_latex(path):
     parsed_data = []
@@ -57,3 +59,17 @@ def export_task_submissions_to_csv(task_submissions):
             'points': submission.points,
         })
     return response
+
+
+def compare_equations(solution, student_solution):
+
+    expr1 = pl(student_solution)
+    expr2 = pl(solution)
+
+    simplified_expr1 = simplify(expr1)
+    simplified_expr2 = simplify(expr2)
+
+    equation1 = Eq(simplified_expr1, 0)
+    equation2 = Eq(simplified_expr2, 0)
+
+    return equation1 == equation2

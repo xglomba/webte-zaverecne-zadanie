@@ -1,29 +1,37 @@
 {% load i18n %}
 
 <div id="task-modal" class="modal" tabindex="-1">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-        <div class="modal-body">
-            <label for="task">{% trans 'Task' %}</label>
-            <div class="d-block" style="width: fit-content" id="task"></div>
-            <img id="task-image" style="display: none" alt="Schema image" width="100%">
-            <form method="POST" action="{% url 'submit_math' %}">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Task</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>{% trans 'Task assignment' %}</h5>
+                <div class="d-block" style="width: fit-content" id="task"></div>
+                <hr>
+                <h5>Your solution</h5>
+                <div class="mt-3" id="toolbar">
+                    <button class="btn btn-outline-secondary btn-xs" onclick="insertSymbol('\\sqrt')">√</button>
+                    <button class="btn btn-outline-secondary btn-xs" onclick="insertSymbol('\\pi')">π</button>
+                    <button class="btn btn-outline-secondary btn-xs" onclick="insertSymbol('\\sin')">sin</button>
+                    <button class="btn btn-outline-secondary btn-xs" onclick="insertSymbol('\\cos')">cos</button>
+                    <button class="btn btn-outline-secondary btn-xs" onclick="insertSymbol('\\tan')">tan</button>
+                    <button class="btn btn-outline-secondary btn-xs" onclick="insertSymbol('\\sum')">∑</button>
+                    <button class="btn btn-outline-secondary btn-xs" onclick="insertSymbol('\\int')">∫</button>
+                </div>
+                <div class="mt-2 mb-2 w-25 p-2" id="equation-editor"></div>
+            </div>
+            <form method="post" id="task_modal_form" action="{% url 'compare_solutions' %}">
                 {% csrf_token %}
-                <label for="math-editor">{% trans 'Solution' %}</label>
-                <textarea id="math-editor"
-                          placeholder="When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
-                                        \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]"
-                          name="math_content">
-                </textarea>
+                <input name="students_solution" id="students_solution" type="hidden">
+                <input name="task_id" id="task_id" type="hidden">
+                <div class="modal-footer">
+                    <button class="btn btn-outline-secondary btm-sm ms-2" onclick="getEquation()" type="button"
+                            formaction="">{% trans 'Submit' %}</button>
+                </div>
             </form>
         </div>
-      <div class="modal-footer">
-        <button class="btn btn-outline-secondary" type="submit" formaction="{% url 'submit_math' %}">{% trans 'Submit' %}</button>
-      </div>
     </div>
-  </div>
 </div>

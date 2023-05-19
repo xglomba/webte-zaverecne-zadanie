@@ -49,19 +49,25 @@
             <th>Task ID</th>
             <th>Task</th>
             <th>Batch</th>
-            <th>Solve</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         {% for task in tasks %}
             <tr>
-                <td>{{ task.id }}</td>
-                <td>{{ task.task }}</td>
-                <td>{{ task.batch.name }}</td>
+                <td>{{ task.task.id }}</td>
+                <td>{{ task.task.task }}</td>
+                <td>{{ task.task.batch.name }}</td>
                 <td>
-                    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#task-modal" onclick='fillTaskModal("{{ task.id }}", "{{ task.task }}", "{{ task.image }}")'>
-                        SOLVE
-                    </button>
+                    {% if task.task_submission.points is None %}
+                        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
+                                data-bs-target="#task-modal"
+                                onclick='fillTaskModal("{{ task.task.id }}", "{{ task.task.task }}", "{{ task.task.image }}")'>
+                            SOLVE
+                        </button>
+                    {% else %}
+                        {{ task.task_submission.points }} Point/s
+                    {% endif %}
                 </td>
             </tr>
         {% empty %}
@@ -73,8 +79,12 @@
     </table>
 
     {% include 'zaverecne_zadanie/students/task_modal.html' %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mathquill@0.10.1/build/mathquill.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathquill@0.10.1/build/mathquill.min.js"></script>
+
     <script>
         $(document).ready(function () {
             $('#tasks-table').DataTable();
@@ -90,14 +100,12 @@
                 document.getElementById("task-image").style.display = "none";
             }
             let str = insertNewlines(task, 100);
-            console.log(str);
             str = str.replaceAll('$', "");
-                        console.log(str);
 
             str = str.replace(/ /g, '\\hspace{1mm}');
             str = str.replace('dfrac', '\\dfrac');
             convertEquation(str);
-            console.log(str);
+            document.getElementById("task_id").value = id;
         }
 
 
@@ -133,6 +141,19 @@
             document.getElementById("generate-task-form").submit();
         }
 
+        var mathField = MathQuill.MathField(document.getElementById("equation-editor"));
+
+        function insertSymbol(symbol) {
+            mathField.cmd(symbol);
+        }
+
+        // Get the equation from the MathQuill instance
+        function getEquation() {
+            var equation = mathField.latex();
+            console.log(equation);
+            document.getElementById("students_solution").value = equation;
+            document.getElementById("task_modal_form").submit();
+        }
 
     </script>
 {% endblock %}
