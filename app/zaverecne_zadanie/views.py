@@ -162,4 +162,6 @@ class ManualView(View):
         if not request.user.is_authenticated:
             return redirect(reverse('login'))
 
+        if request.user.is_superuser:
+            return render(request, 'zaverecne_zadanie/manual_core.html')
         return render(request, 'zaverecne_zadanie/manual.html')
