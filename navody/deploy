@@ -1,13 +1,11 @@
 Aplikacia bezi na adrese:
-
     http://147.175.98.94:8000/en/login/
 
 Login a heslo ucitela:
-    xadmin admin
+    xUcitel ucitel
 
 Login a heslo ziaka:
-    xxuser heslotest
+    xStudent Heslo123
 
-V case odovzdania nefunguje:
-    kontrola vysledku
-    historia testov
+Rozdelenie uloh:
+    O rozdeleni uloh hovoria GitHub commity a prilozene grafy
