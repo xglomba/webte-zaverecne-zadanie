@@ -23,25 +23,6 @@ def render_student_template(request, template):
     return render(request, template)
 
 
-def submit_math_view(request):
-    if request.method == 'POST':
-        math_content = request.POST.get('math_content')
-        return HttpResponse('Math content submitted successfully.')
-    else:
-        return HttpResponse('Invalid request method.')
-
-
-def equation_editor(request):
-    if request.method == 'POST':
-        form = EquationForm(request.POST)
-        if form.is_valid():
-            equation = form.cleaned_data['equation']
-            # Process the equation as needed
-    else:
-        form = EquationForm()
-    return render(request, 'home.html', {'form': form})
-
-
 class LoginView(View):
     template_name = 'zaverecne_zadanie/login.html'
 
@@ -118,22 +99,9 @@ class HomeView(View):
         filtered_batches = []
         for batch in batches:
             task_count = Task.objects.filter(batch=batch).count()
-            if len([task for task in tasks if task.task.batch == batch]) < task_count:
+            if len([task for task in tasks if task.get('task').batch == batch]) < task_count:
                 filtered_batches.append(batch)
         return filtered_batches
-
-
-class TestView(View):
-    template_name = 'zaverecne_zadanie/test.html'
-
-    def get(self, request):
-        if not request.user.is_authenticated:
-            return redirect(reverse('login'))
-
-        if request.user.is_superuser:
-            return redirect('admin:index')
-
-        return render(request, self.template_name)
 
 
 class ExportTaskSubmissionsView(View):

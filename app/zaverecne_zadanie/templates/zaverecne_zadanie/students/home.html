@@ -7,9 +7,7 @@
 </head>
 
 {% block content %}
-    <h1 class="text-center">{% trans 'Welcome' %} {{ user.username }} </h1>
-    <br>
-    <h2>{% trans 'Available batches' %}</h2>
+    <h2 class="mt-2">{% trans 'Available batches' %}</h2>
     <table id="batches-table">
         <thead>
         <tr>
@@ -42,8 +40,8 @@
     </table>
     <br>
     <br>
-    <h2>{% trans 'Assigned tasks ' %}{{ request.user.username }}</h2>
-    <table id="tasks-table">
+    <h2>{% trans 'Assigned tasks ' %}</h2>
+    <table class="mb-2" id="tasks-table">
         <thead>
         <tr>
             <th>Task ID</th>
