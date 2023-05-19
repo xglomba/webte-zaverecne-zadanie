@@ -25,14 +25,6 @@ ul li a:hover {
     color: coral;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-left: 13rem;
-    padding-right: 13rem;
-}
-
 label {
     font-size: 1.2em;
     font-weight: bold;
@@ -64,4 +56,18 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: white;
     color: black;
+}
+
+.katex-html {
+    width: fit-content;
+}
+
+/* Add space between broken lines: */
+.katex-display > .base {
+    margin: 0.25em 0
+}
+
+/* Compensate by reducing space around display math */
+.katex-display {
+    margin: 0.5em 0;
 }

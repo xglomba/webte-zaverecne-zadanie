@@ -40,17 +40,18 @@ def equation_editor(request):
     return render(request, 'home.html', {'form': form})
 
 
-@login_required
-def user_tasks(request):
-    user = request.user
-    task_assignments = TaskSubmission.objects.filter(user_id=user.id)
-    tasks = Task.objects.filter(id__in=task_assignments.values('task_id'))
-    context = {'tasks': tasks}
-    return render(request, 'zaverecne_zadanie/students/home.html', context)
+# @login_required
+# def user_tasks(request):
+#     user = request.user
+#     task_assignments = TaskSubmission.objects.filter(user_id=user.id)
+#     tasks = Task.objects.filter(id__in=task_assignments.values('task_id'))
+#     context = {'tasks': tasks}
+#     return render(request, 'zaverecne_zadanie/students/home.html', context)
 
 
 def previous_assignments_view(request):
     return render(request, 'zaverecne_zadanie/students/previousAssignments.html')
+
 
 class LoginView(View):
     template_name = 'zaverecne_zadanie/login.html'
@@ -90,22 +91,25 @@ class HomeView(View):
     def get(self, request):
         if request.user.is_superuser:
             return redirect('admin:index')
+        print("GET //////////////////////")
+        context = {'tasks': self.get_user_tasks(request)}
 
-        return render(request, self.template_name)
+        print(self.get_user_tasks(request))
+        return render(request, self.template_name, context=context)
 
     def post(self, request):
         if request.user.is_superuser:
             return redirect('admin:index')
+        print("POST //////////////////////")
+        context = {'tasks': self.get_user_tasks(request)}
+        return render(request, self.template_name, context=context)
 
-        return render(request, self.template_name)
-
-    @login_required
-    def user_tasks(request):
+    def get_user_tasks(self, request):
         user = request.user
         task_assignments = TaskSubmission.objects.filter(user_id=user.id)
         tasks = Task.objects.filter(id__in=task_assignments.values('task_id'))
-        context = {'tasks': tasks}
-        return render(request, 'zaverecne_zadanie/students/home.html', context)
+        print(tasks)
+        return tasks
 
 
 class TestView(View):
@@ -123,4 +127,3 @@ class ExportTaskSubmissionsView(View):
         task_submissions = TaskSubmission.objects.all()
 
         return export_task_submissions_to_csv(task_submissions)
-

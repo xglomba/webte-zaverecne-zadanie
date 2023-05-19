@@ -3,14 +3,7 @@
 {% load i18n %}
 
 <head>
-    ...
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
-
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script src="{% static 'js/mathjax.js' %}"></script>
-
 </head>
 
 {% block content %}
@@ -24,46 +17,84 @@
         <li><a {% url 'previousAssignments' %}> {% trans 'View Previous Assignments' %}</a></li>
     </ul>
 
-    <form method="POST" action="{% url 'submit_math' %}">
-        {% csrf_token %}
-        <label for="math-editor">{% trans 'Solution' %}</label><textarea id="math-editor" placeholder="When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
-        \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]" name="math_content"></textarea>
-        <button type="submit">{% trans 'Submit' %}</button>
-    </form>
-
     <h2>{% trans 'Tasks Assigned to ' %}{{ request.user.username }}</h2>
-    <ul>
+    <table id="tasksTable">
+        <thead>
+        <tr>
+            <th>Task ID</th>
+            <th>Task</th>
+            <th>Batch</th>
+            <th>Solve</th>
+        </tr>
+        </thead>
+        <tbody>
         {% for task in tasks %}
-            <li>{{ task.solution }}</li>
-            {% empty %}
-            <li>{% trans 'No tasks assigned.' %}</li>
+            <tr>
+                <td>{{ task.id }}</td>
+                <td>{{ task.task }}</td>
+                <td>{{ task.batch.name }}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#task-modal" onclick='fillTaskModal("{{ task.id }}", "{{ task.task }}", "{{ task.image }}")'>
+                        solve
+                    </button>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4">{% trans 'No tasks assigned.' %}</td>
+            </tr>
         {% endfor %}
-    </ul>
+        </tbody>
+    </table>
 
-    <div id="divMathOut">
-
-    </div>
-    <script>import {typeset} from 'mathjax';</script>
+    {% include 'zaverecne_zadanie/students/task_modal.html' %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
     <script>
-
-        window.addEventListener('DOMContentLoaded', () => {
-            typeset();
+        $(document).ready(function () {
+            $('#tasksTable').DataTable();
         });
 
-        import CKEDITOR from "../../../../staticfiles/admin/js/vendor/xregexp/xregexp";
+        function fillTaskModal(id, task, image){
+            let str = insertNewlines(task, 100);
+            console.log(str);
+            str = str.replaceAll('$', "");
+                        console.log(str);
 
-        MathJax.Hub.Configured(function () {
+            str = str.replace(/ /g, '\\hspace{1mm}');
+            str = str.replace('dfrac', '\\dfrac');
+            convertEquation(str);
+            console.log(str);
+        }
 
-            CKEDITOR.replace('math-editor', {
-                extraPlugins: 'MathJax',
-                mathJaxLib: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_SVG'
+
+        function convertEquation(latexEquation) {
+            var equationElement = document.getElementById('task');
+            katex.render(latexEquation, equationElement, {
+                throwOnError: true,
+                displayMode: true
             });
+        }
 
-            // Render math using MathJax in the preview element
-            CKEDITOR.instances['math-editor'].on('change', function () {
-                MathJax.Hub.Queue(['Typeset', MathJax.Hub, 'math-preview']);
-            });
-        });
+        function insertNewlines(equation, lineLength) {
+            let result = '';
+            let currentLineLength = 0;
+
+            for (let i = 0; i < equation.length; i++) {
+                const char = equation[i];
+                result += char;
+                currentLineLength++;
+
+                // Check if the current line length exceeds the specified line length
+                if (currentLineLength >= lineLength && char === ' ') {
+                    result += '\\\\';
+                    currentLineLength = 0;
+                }
+            }
+
+            return result;
+        }
+
 
     </script>
 {% endblock %}

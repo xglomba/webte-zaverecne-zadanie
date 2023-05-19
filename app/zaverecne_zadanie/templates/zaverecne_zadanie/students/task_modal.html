@@ -1,0 +1,28 @@
+{% load i18n %}
+
+<div id="task-modal" class="modal" tabindex="-1">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <div class="modal-body">
+            <label for="task">{% trans 'Task' %}</label>
+            <div class="d-block" style="width: fit-content" id="task"></div>
+            <form method="POST" action="{% url 'submit_math' %}">
+                {% csrf_token %}
+                <label for="math-editor">{% trans 'Solution' %}</label>
+                <textarea id="math-editor"
+                          placeholder="When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+                                        \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]"
+                          name="math_content">
+                </textarea>
+            </form>
+        </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline-secondary" type="submit" formaction="{% url 'submit_math' %}">{% trans 'Submit' %}</button>
+      </div>
+    </div>
+  </div>
+</div>
