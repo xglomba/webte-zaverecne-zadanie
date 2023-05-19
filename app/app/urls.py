@@ -19,12 +19,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path("i18n/", include("django.conf.urls.i18n")),
 ]
 
-urlpatterns += i18n_patterns(path("admin/", admin.site.urls))
+urlpatterns += i18n_patterns(path('admin/logout/', LogoutView.as_view(next_page='/logout/'), name='admin_logout'))
+urlpatterns += i18n_patterns(path('admin/', admin.site.urls))
 urlpatterns += i18n_patterns(path("", include('zaverecne_zadanie.urls')))
 
 if settings.DEBUG:

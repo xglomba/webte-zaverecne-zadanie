@@ -65,7 +65,7 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-            <form action="{% url 'login' %}" method="post">
+            <form action="{% url 'logout' %}" method="post">
                 {% csrf_token %}
                 <button type="submit">{% trans 'Logout' %}</button>
             </form>
