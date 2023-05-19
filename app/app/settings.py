@@ -43,6 +43,9 @@ INSTALLED_APPS = [
 
 JAZZMIN_SETTINGS = {
     "language_chooser": True,
+    "topmenu_links": [
+        {"name": "Manual", "url": "manual"}
+    ]
 }
 
 MIDDLEWARE = [
