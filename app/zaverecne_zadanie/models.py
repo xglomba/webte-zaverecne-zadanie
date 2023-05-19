@@ -99,4 +99,5 @@ class TaskSubmission(models.Model):
     def __str__(self):
         return f'Task {self.task.id} (batch {self.task.batch.name}) - ({self.user.username} - {self.user.ais_id})'
 
+
 TaskSubmission(models.Model)

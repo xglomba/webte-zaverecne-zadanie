@@ -41,15 +41,6 @@ def equation_editor(request):
     return render(request, 'home.html', {'form': form})
 
 
-# @login_required
-# def user_tasks(request):
-#     user = request.user
-#     task_assignments = TaskSubmission.objects.filter(user_id=user.id)
-#     tasks = Task.objects.filter(id__in=task_assignments.values('task_id'))
-#     context = {'tasks': tasks}
-#     return render(request, 'zaverecne_zadanie/students/home.html', context)
-
-
 def previous_assignments_view(request):
     return render(request, 'zaverecne_zadanie/students/previousAssignments.html')
 
@@ -62,7 +53,7 @@ class LoginView(View):
             if request.user.is_superuser:
                 return redirect('admin:index')
             else:
-                return render_student_template(request, 'zaverecne_zadanie/students/home.html')
+                return redirect(reverse('home'))
         return render(request, self.template_name)
 
     def post(self, request):
@@ -72,10 +63,7 @@ class LoginView(View):
 
         if user is not None:
             login(request, user)
-            if user.is_superuser:
-                return redirect('admin:index')
-            else:
-                return render_student_template(request, 'zaverecne_zadanie/students/home.html')
+            return redirect('admin:index') if user.is_superuser else redirect(reverse('home'))
         else:
             messages.error(request, 'Username or password is not correct!')
             return render(request, self.template_name, {'username': username})

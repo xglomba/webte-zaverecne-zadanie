@@ -5,7 +5,6 @@ from . import views
 from .views import submit_math_view
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('login/', views.LoginView.as_view(), name='login'),
     path('logout/', views.CustomLogoutView.as_view(), name='logout'),
     path('home/', views.HomeView.as_view(), name='home'),
